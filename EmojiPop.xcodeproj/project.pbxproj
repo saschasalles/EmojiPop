@@ -26,6 +26,7 @@
 		2B2B20412619C22300266C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B2B20442619C22300266C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B2B20462619C22300266C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B2B204D2619C29100266C93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 		2B2B202A2619C22200266C93 = {
 			isa = PBXGroup;
 			children = (
+				2B2B204D2619C29100266C93 /* README.md */,
 				2B2B20352619C22200266C93 /* EmojiPop */,
 				2B2B20342619C22200266C93 /* Products */,
 			);
