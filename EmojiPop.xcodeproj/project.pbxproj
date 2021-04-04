@@ -14,6 +14,7 @@
 		2B2B20402619C22300266C93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B203E2619C22300266C93 /* Main.storyboard */; };
 		2B2B20422619C22300266C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B20412619C22300266C93 /* Assets.xcassets */; };
 		2B2B20452619C22300266C93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B20432619C22300266C93 /* LaunchScreen.storyboard */; };
+		2B2B20502619D7E800266C93 /* SoundEffects in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B204F2619D7E800266C93 /* SoundEffects */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		2B2B20442619C22300266C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B2B20462619C22300266C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B2B204D2619C29100266C93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2B2B204F2619D7E800266C93 /* SoundEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SoundEffects; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		2B2B20352619C22200266C93 /* EmojiPop */ = {
 			isa = PBXGroup;
 			children = (
+				2B2B204F2619D7E800266C93 /* SoundEffects */,
 				2B2B20362619C22200266C93 /* AppDelegate.swift */,
 				2B2B20382619C22300266C93 /* Scene.sks */,
 				2B2B203A2619C22300266C93 /* Scene.swift */,
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2B20502619D7E800266C93 /* SoundEffects in Resources */,
 				2B2B20392619C22300266C93 /* Scene.sks in Resources */,
 				2B2B20452619C22300266C93 /* LaunchScreen.storyboard in Resources */,
 				2B2B20422619C22300266C93 /* Assets.xcassets in Resources */,

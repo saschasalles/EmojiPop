@@ -28,7 +28,13 @@ class Scene: SKScene {
   }
 
   override func update(_ currentTime: TimeInterval) {
-    // Called before each frame is rendered
+    if gameState != .playing { return }
+    if spawnTime == 0 { spawnTime = currentTime + 3 }
+    if spawnTime < currentTime {
+      spawnEmoji()
+      spawnTime = currentTime + 0.5
+    }
+    updateHUD(withMessage: "SCORE: \(score) • LIVES: \(lives)")
   }
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -39,7 +45,7 @@ class Scene: SKScene {
       self.playGame()
       break
     case .playing:
-      //checkTouches(touches)
+      self.checkTouches(touches)
       break
     case .gameOver:
       self.startGame()
@@ -91,4 +97,57 @@ class Scene: SKScene {
     }
   }
 
+  func spawnEmoji() {
+    let emojiNode = SKLabelNode(text: String(self.emojis.randomElement()!))
+    emojiNode.name = "Emoji"
+    emojiNode.horizontalAlignmentMode = .center
+    emojiNode.verticalAlignmentMode = .center
+    emojiNode.physicsBody = SKPhysicsBody(circleOfRadius: 15)
+    emojiNode.physicsBody?.mass = 0.01
+
+
+    guard let sceneView = self.view as? ARSKView else { return }
+    let spawnNode = sceneView.scene?.childNode(withName: "SpawnPoint")
+    spawnNode?.addChild(emojiNode)
+    emojiNode.physicsBody?.applyImpulse(CGVector(dx: -5 + 10 * randomCGFloat(), dy: 10))
+    emojiNode.physicsBody?.applyTorque(-0.2 + 0.4 * randomCGFloat())
+
+    let spawnSoundAction = SKAction.playSoundFileNamed("SoundEffects/Spawn.wav", waitForCompletion: false)
+    let dieSoundAction = SKAction.playSoundFileNamed("SoundEffects/Die.wav", waitForCompletion: false)
+    let waitAction = SKAction.wait(forDuration: 3)
+    let removeAction = SKAction.removeFromParent()
+
+    let runAction = SKAction.run({
+      self.lives -= 1
+      if self.lives <= 0 {
+        self.stopGame()
+      }
+    })
+
+    let sequenceAction = SKAction.sequence([
+      spawnSoundAction, waitAction, dieSoundAction, runAction, removeAction
+    ])
+    emojiNode.run(sequenceAction)
+  }
+
+  // Helper Methods
+
+
+  func randomCGFloat() -> CGFloat {
+    return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+  }
+
+  func checkTouches(_ touches: Set<UITouch>) {
+    guard let touch = touches.first else { return }
+    let touchLocation = touch.location(in: self)
+    let touchedNode = self.atPoint(touchLocation)
+
+    if touchedNode.name != "Emoji" { return }
+    score += 1
+
+    let collectSoundAction = SKAction.playSoundFileNamed("SoundEffects/Collect.wav", waitForCompletion: false)
+    let removeAction = SKAction.removeFromParent()
+    let sequenceAction = SKAction.sequence([collectSoundAction, removeAction])
+    touchedNode.run(sequenceAction)
+  }
 }
